@@ -2,7 +2,7 @@
 
 class HomeModel{
     public function Index(){
-        return;
+        return ;
     }
 
 

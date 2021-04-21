@@ -8,4 +8,4 @@ define("DB_NAME", "commentsdb");
 
 // Define URL
 define("ROOT_PATH", "/");
-define("ROOT_URL", "http://localhost/simplePHP");
+define("ROOT_URL", "http://localhost/simplePHP/");
