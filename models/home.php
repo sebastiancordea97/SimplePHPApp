@@ -1,7 +1,7 @@
 <?php
 
 class HomeModel{
-    public function Index(){
+    public function index(){
         return ;
     }
 

@@ -2,11 +2,17 @@
 
 
 class UserModel extends Model{
-    public function Index(){
-        $this->query('SELECT * FROM users');
-        $rows = $this->resultSet();
-        return $rows;
+    public function index(){
+        // $this->query('SELECT * FROM users');
+        // $rows = $this->resultSet();
+        // return $rows;
+        return ;
     }
 
-
+    public function register(){
+        // $this->query('SELECT * FROM users');
+        // $rows = $this->resultSet();
+        // return $rows;
+        return ;
+    }
 }
