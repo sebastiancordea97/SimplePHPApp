@@ -5,5 +5,4 @@
     <p class="lead text-white"> have account ? login : register</p>
     <button class="btn btn-outline-success text-center" onClick="location.href='#'">LogIn</button>
     <button class="btn btn-outline-primary text-center" onClick="location.href='<?php echo ROOT_URL; ?>users/register'" >register</button>
-    
 </div>
