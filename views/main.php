@@ -17,8 +17,12 @@
 
 <body>
 
-
+    <div class="container">
+    <div class="row">
     <?php require($view); ?> 
+    </div>
+    <?php Message::displayMessage(); ?>
+    </div>
 
 
      <!-- Popper and Bootstrap JS -->

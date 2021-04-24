@@ -21,7 +21,7 @@ class UserModel extends Model{
              $this->bind(':password', $passwordHash, PDO::PARAM_STR);
 
             $this->execQuery();
-            if($this->databaseHandler->lastInsertId()){ header('Location: '.ROOT_URL);}
+            if($this->databaseHandler->lastInsertId()){ header('Location: '.ROOT_URL);} else {Message::setMessage('Failed to register', 'error');}
            
         }
 
@@ -41,7 +41,7 @@ class UserModel extends Model{
                $this->createSession($entry);
                header('location: '.ROOT_URL); // redirect to something the user sees after login
             }else{
-                die('is no ok');
+                Message::setMessage('Failed to log in', 'error');
             }
            
            
