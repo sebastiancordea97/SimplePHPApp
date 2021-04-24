@@ -37,4 +37,9 @@ abstract class Model{
         return $this->statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function singleEntry(){
+        $this->execQuery();
+        return $this->statement->fetch(PDO::FETCH_ASSOC); //only 1 record
+    }
+
 }
