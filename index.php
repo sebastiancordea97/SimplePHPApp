@@ -13,12 +13,8 @@ require('models/home.php');
 require('models/user.php');
 
 $bootstrap = new Bootstrap($_GET);
-
 $controller = $bootstrap->createController();
-
-
-if($controller)
- {
+if ($controller) {
    $controller->executeAction();
- }
+}
 

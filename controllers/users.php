@@ -1,9 +1,11 @@
 <?php
 
-class Users extends Controller{
+class Users extends Controller
+{
 
-    protected function register(){
-            $viewmodel = new UserModel();
+    protected function register()
+    {
+        $viewmodel = new UserModel();
         $this->returnView($viewmodel->register(), true);
     }
 
@@ -14,7 +16,8 @@ class Users extends Controller{
     }
     
     protected function logout()
-    {   unset($_SESSION['isLoggedIn']);
+    {
+        unset($_SESSION['isLoggedIn']);
         session_destroy();
         header('location: '.ROOT_URL);
     }

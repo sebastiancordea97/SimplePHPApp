@@ -1,54 +1,33 @@
 <?php
 
 
-class UserModel extends Model{
-   
-
-    public function register(){
-      
+class UserModel extends Model
+{
+    public function register()
+    {
         $postValues = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        if(isset($postValues['submit'])){
-           
-           
+        if (isset($postValues['submit'])) {
             $passwordHash = sha1($postValues['pwd']);
-
-             $this->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
-            
-             $this->bind(':name', $postValues['uname'], PDO::PARAM_STR);
-             $this->bind(':email', $postValues['email'], PDO::
-             PARAM_STR);
-             $this->bind(':password', $passwordHash, PDO::PARAM_STR);
-
+            $this->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
+            $this->bind(':name', $postValues['uname'], PDO::PARAM_STR);
+            $this->bind(':email', $postValues['email'], PDO::PARAM_STR);
+            $this->bind(':password', $passwordHash, PDO::PARAM_STR);
             $this->execQuery();
-            if($this->databaseHandler->lastInsertId()){ header('Location: '.ROOT_URL);}
-           
+            if ($this->databaseHandler->lastInsertId()) { header('Location: '.ROOT_URL);}
         }
-
-        return;
-
-      
     }
 
     public function login(){
-
         $postValues = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        if(isset($postValues['submit'])){
-
+        if (isset($postValues['submit'])) {
             $entry = $this->checkCredentials($postValues);
-            
-            if($entry){
-               $this->createSession($entry);
-               header('location: '.ROOT_URL); // redirect to something the user sees after login
-            }else{
+            if ($entry) {
+                $this->createSession($entry);
+                header('location: ' . ROOT_URL);
+            } else {
                 die('is no ok');
             }
-           
-           
-
         }
-
-        return;
     }
 
     public function createSession($entry)
@@ -59,7 +38,6 @@ class UserModel extends Model{
             "name" => $entry['name'],
             "email" => $entry['email']
         );
-        return;
     }
 
     public function checkCredentials($creds)
@@ -69,11 +47,6 @@ class UserModel extends Model{
         $this->bind(':email', $creds['email']);
         $this->bind(':pwd', $passwordHash);
         $result = $this->singleEntry();
-       
-        return $result ;
-
+        return $result;
     }
-   
-
-
 }
